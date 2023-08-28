@@ -156,8 +156,15 @@ function removeFirstOccurrences(str, value) {
  *   '<span>' => 'span'
  *   '<a>' => 'a'
  */
-function unbracketTag(/* str */) {
-  throw new Error('Not implemented');
+function unbracketTag(str) {
+  // Проверяем, что строка начинается с '<' и заканчивается '>'
+  if (str.startsWith('<') && str.endsWith('>')) {
+    // Используем методы slice() или substring() для удаления угловых скобок
+    return str.slice(1, -1);
+    // Можно также использовать: return str.substring(1, str.length - 1);
+  }
+  // Если строка не содержит угловых скобок, вернем ее как есть
+  return str;
 }
 
 
