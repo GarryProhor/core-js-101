@@ -178,8 +178,8 @@ function unbracketTag(str) {
  *   'Thunderstruck' => 'THUNDERSTRUCK'
  *  'abcdefghijklmnopqrstuvwxyz' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
  */
-function convertToUpperCase(/* str */) {
-  throw new Error('Not implemented');
+function convertToUpperCase(str) {
+  return str.toUpperCase();
 }
 
 /**
@@ -197,8 +197,14 @@ function convertToUpperCase(/* str */) {
  *   ],
  *   'info@gmail.com' => ['info@gmail.com']
  */
-function extractEmails(/* str */) {
-  throw new Error('Not implemented');
+function extractEmails(str) {
+  // Разделяем строку на подстроки, используя точку с запятой как разделитель
+  const emailArray = str.split(';');
+
+  // Фильтруем массив, оставляя только корректные адреса электронной почты
+  const validEmails = emailArray.filter((email) => /\S+@\S+\.\S+/.test(email));
+
+  return validEmails;
 }
 
 /**
