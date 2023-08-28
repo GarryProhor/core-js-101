@@ -230,8 +230,20 @@ function extractEmails(str) {
  *             '└──────────┘\n'
  *
  */
-function getRectangleString(/* width, height */) {
-  throw new Error('Not implemented');
+function getRectangleString(width, height) {
+  if (width <= 1 || height <= 1) {
+    // Проверяем, что ширина и высота больше 1
+    throw new Error('Width and height must be greater than 1.');
+  }
+
+  const horizontalBorder = '─'.repeat(width - 2);
+  const topBorder = `┌${horizontalBorder}┐\n`;
+  const middleRow = `│${' '.repeat(width - 2)}│\n`;
+  const bottomBorder = `└${horizontalBorder}┘\n`;
+
+  const rectangle = topBorder + middleRow.repeat(height - 2) + bottomBorder;
+
+  return rectangle;
 }
 
 
@@ -251,8 +263,24 @@ function getRectangleString(/* width, height */) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(/* str */) {
-  throw new Error('Not implemented');
+function encodeToRot13(str) {
+  // Функция для получения символа после ROT13 шифрования
+  function rot13Char(char) {
+    const isUpperCase = char >= 'A' && char <= 'Z';
+    const isLowerCase = char >= 'a' && char <= 'z';
+
+    if (isUpperCase || isLowerCase) {
+      const shift = isUpperCase ? 65 : 97;
+      return String.fromCharCode(((char.charCodeAt(0) - shift + 13) % 26) + shift);
+    }
+
+    return char;
+  }
+
+  // Применяем ROT13 шифрование к каждому символу строки
+  const encoded = str.split('').map(rot13Char).join('');
+
+  return encoded;
 }
 
 /**
