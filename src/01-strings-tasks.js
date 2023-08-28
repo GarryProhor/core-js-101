@@ -65,8 +65,17 @@ function getStringFromTemplate(firstName, lastName) {
  *   'Hello, John Doe!' => 'John Doe'
  *   'Hello, Chuck Norris!' => 'Chuck Norris'
  */
-function extractNameFromTemplate(/* value */) {
-  throw new Error('Not implemented');
+function extractNameFromTemplate(value) {
+  // Найдем индекс начала имени, который начинается после "Hello, ".
+  const startIndex = value.indexOf('Hello, ') + 'Hello, '.length;
+
+  // Найдем индекс конца имени, который определяется символом '!'
+  const endIndex = value.indexOf('!', startIndex);
+
+  // Извлечем имя, используя метод substring
+  const name = value.substring(startIndex, endIndex);
+
+  return name;
 }
 
 
