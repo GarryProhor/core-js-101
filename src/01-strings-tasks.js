@@ -89,8 +89,13 @@ function extractNameFromTemplate(value) {
  *   'John Doe'  => 'J'
  *   'cat'       => 'c'
  */
-function getFirstChar(/* value */) {
-  throw new Error('Not implemented');
+function getFirstChar(value) {
+  // Проверяем, что строка не пустая
+  if (value.length === 0) {
+    return ''; // Если строка пустая, вернем пустую строку
+  }
+
+  return value[0]; // Возвращаем первый символ строки
 }
 
 /**
