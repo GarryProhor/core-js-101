@@ -412,7 +412,7 @@ function getItemsSum(arr) {
  *  [ -1, 'false', null, 0 ] => 2
  *  [ null, undefined, NaN, false, 0, '' ]  => 6
  */
-function getFalsyValuesCount( arr) {
+function getFalsyValuesCount(arr) {
   return arr.filter((value) => !value).length;
 }
 
@@ -510,9 +510,8 @@ function sortCitiesArray(arr) {
  *           [0,0,0,0,1]]
  */
 function getIdentityMatrix(n) {
-  return Array.from({ length: n }, (_, i) => {
-    return Array.from({ length: n }, (_, j) => (i === j ? 1 : 0));
-  });
+  // eslint-disable-next-line max-len,no-shadow
+  return Array.from({ length: n }, (_, i) => Array.from({ length: n }, (_, j) => (i === j ? 1 : 0)));
 }
 
 /**
